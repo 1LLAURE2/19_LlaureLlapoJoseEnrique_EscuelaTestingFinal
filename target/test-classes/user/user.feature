@@ -15,7 +15,7 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
       And match response.message == "ok"
       And print response
 
-    @TEST-U-02 @HappyPath
+    @TEST-U-02
     Scenario Outline: Obtener usuario por nombre de usuario
       Given path 'user' , <nombreUsuario>
       When method get
@@ -23,12 +23,12 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
       #And match response.message == <message>
       And if (<status> == 200) karate.match(response.message, <nombreUsuario>)
       And if (<status> == 404) karate.match(response.message, <message>)
-      @Happy
+      @HappyPath
         Examples:
         |nombreUsuario|status|message         |expected               |
         |"jllaure"    |200   |""              |{ username: 'jllaure' }|
 
-      @UnHappy
+      @UnHappyPath
         Examples:
         |nombreUsuario|status|message         |expected                     |
         |"user1"      |404   |"User not found"|{ message: 'User not found' }|
@@ -43,27 +43,27 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
       And request jsonActualizarUser
       When method put
       Then status <status>
-      @Happy
+      @HappyPath
         Examples:
         |username   |status|
         |"jllaure"  |200   |
 
-      @UnHappy
+      @UnHappyPath
         Examples:
         |username   |status|
         |"user125"  |404   |
 
-    @TEST-U-04 @delete
+    @TEST-U-04
     Scenario Outline: Eliminar usuario
       Given path 'user' , <username>
       When method delete
       Then status <status>
-      @Happy
+      @HappyPath
         Examples:
         |username   |status|
         |"string"   |200   |
 
-      @UnHappy
+      @UnHappyPath
         Examples:
         |username   |status|
         |"user125"  |404   |
@@ -75,23 +75,23 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
       And param password = <password>
       When method get
       Then status <status>
-      @Happy
+      @HappyPath
         Examples:
         |username |password |status|
         |"jllaure"|987654321|200   |
-      @UnHappy
+      @UnHappyPath
         Examples:
         |username |password |status|
         |"user1"  |987654321|404   |
 
-    @TEST-U-06
+    @TEST-U-06 @HappyPath
     Scenario: Cerrar sesión del usuario
       Given path 'user/logout'
       When method get
       Then status 200
       And match response.message == "ok"
 
-    @TEST-U-07
+    @TEST-U-07 @HappyPath
     Scenario: Creación de una lista de usuarios con la matriz de entrada dada
       Given path 'user' , 'createWithArray'
       And request jsonCrearUser[0].username = "jllaure2"
@@ -100,7 +100,7 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
       Then status 200
       And match response.message == 'ok'
 
-    @TEST-U-08
+    @TEST-U-08 @HappyPath
     Scenario: Crear usuario
       Given path 'user'
       And request jsonCrearUser[0].id = 99
