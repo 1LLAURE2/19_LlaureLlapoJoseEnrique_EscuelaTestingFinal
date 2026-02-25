@@ -1,5 +1,5 @@
 # Automatización Store y User
-Proyecto de automatización de pruebas API usando Karate DSL + Maven + JUnit5 para validar los endpoints de Store y User del Swagger Petstore.\
+Proyecto de automatización de pruebas API usando Karate DSL + Maven + JUnit5 para validar los endpoints de Store y User del Swagger Petstore.<br/>
 
 [![alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN2OQatCoFPEX0P82xER8aIz7-C5Mu-6noiQ&s)](https://github.com/1LLAURE2 )
 
@@ -11,14 +11,6 @@ Proyecto de automatización de pruebas API usando Karate DSL + Maven + JUnit5 pa
 + IntelliJ IDEA
 + Api pública: [Swagger Petstore](https://petstore.swagger.io/)
 
-### STORE - Endpoints automatizados
-+ Obtener inventario
-  ```
-  GET /store/inventory
-  ```
-  + Status 200
-  + Devuelve inventario de mascotas por estado
-+ sa
 ### Anotaciones
   ```
   @regresion
@@ -34,7 +26,10 @@ Proyecto de automatización de pruebas API usando Karate DSL + Maven + JUnit5 pa
     ```
     mvn clean test -Dtest=UserRunner -Dkarate.options="--tags @regresion"
     ```
-  
+
+> [!IMPORTANT]
+> puede cambiar las anotaciones de @regresion por anotaciones @HappyPath o UnHappyPath, ya sea el caso que requiera revisar.
+
 # Evidencias
 
   + Store
