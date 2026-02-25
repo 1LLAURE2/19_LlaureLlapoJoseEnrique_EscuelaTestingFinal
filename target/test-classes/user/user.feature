@@ -6,7 +6,7 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
     * def jsonCrearUser = read('classpath:json/user/postUser.json')
     * def jsonActualizarUser = read('classpath:json/user/putUser.json')
 
-    @TEST-U-01 @HappyPath @User
+    @TEST-U-01 @HappyPath
     Scenario: Crea una lista de usuarios con la matriz de entrada
       Given path 'user/createWithList'
       And request jsonCrearUser
@@ -15,14 +15,14 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
       And match response.message == "ok"
       And print response
 
-    @TEST-U-02 @HappyPath @User
+    @TEST-U-02 @HappyPath
     Scenario Outline: Obtener usuario por nombre de usuario
       Given path 'user' , <nombreUsuario>
       When method get
       Then status <status>
-      And match response.message == <message>
-              #And if (<status> == 200) karate.match(response.message, <nombreUsuario>)
-              #And if (<status> == 404) karate.match(response.message, <message>)
+      #And match response.message == <message>
+      And if (<status> == 200) karate.match(response.message, <nombreUsuario>)
+      And if (<status> == 404) karate.match(response.message, <message>)
       @Happy
         Examples:
         |nombreUsuario|status|message         |expected               |
@@ -36,9 +36,10 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
             #And match response contains <expected>
             #And match response.message == <message>
 
-    @TEST-U-03 @HappyPath @User
+    @TEST-U-03
     Scenario Outline:  Actualizar usuario
       Given path 'user', <username>
+      And request jsonActualizarUser.email = "actualizacionUser@gmail.com"
       And request jsonActualizarUser
       When method put
       Then status <status>
@@ -50,7 +51,7 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
       @UnHappy
         Examples:
         |username   |status|
-        |"user1"    |404   |
+        |"user125"  |404   |
 
     @TEST-U-04 @delete
     Scenario Outline: Eliminar usuario
@@ -60,12 +61,12 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
       @Happy
         Examples:
         |username   |status|
-        |"string"     |200   |
+        |"string"   |200   |
 
       @UnHappy
         Examples:
         |username   |status|
-        |"user1"    |404   |
+        |"user125"  |404   |
 
     @TEST-U-05
     Scenario Outline: Iniciar Sesión en el sistema

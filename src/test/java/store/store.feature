@@ -32,21 +32,21 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
         Then status 400
         And print response
 
-      @TEST-04
+      @TEST-04 @HappyPath
       Scenario: Buscar Orden de compra por ID
         Given path 'store/order',10
         When method get
         Then status 200
         And print response
 
-        # Con 0 y 6
-      @TEST-05
+      @TEST-05 @UnHappyPath
       Scenario: Buscar Orden de compra por ID siendo 0
         Given path 'store/order',0
         When method get
         Then status 404
         And print response
 
+        # TODO :  LO MISMO QUE EL TEST-05 PERO CON Scenario Outline
       @TEST-06
       Scenario Outline: Buscar Orden de compra por ID <id>
         Given path 'store/order', <id>
