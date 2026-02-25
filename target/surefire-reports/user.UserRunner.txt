@@ -1,12 +1,15 @@
 -------------------------------------------------------------------------------
-Test set: store.StoreRunner
+Test set: user.UserRunner
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 5.465 s <<< FAILURE! - in store.StoreRunner
-store/store.[3:27] Realizar un pedido de mascota - validacion  Time elapsed: 0.322 s  <<< FAILURE!
+Tests run: 12, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 6.097 s <<< FAILURE! - in user.UserRunner
+user/user.[2.1:29] Obtener usuario por nombre de usuario  Time elapsed: 0.319 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
-status code was: 500, expected: 400, response time in milliseconds: 301, url: https://petstore.swagger.io/v2/store/order, response: 
-{"code":500,"type":"unknown","message":"something bad happened"}
-classpath:store/store.feature:32
+match failed: EQUALS
+  $ | actual path does not exist (STRING:STRING)
+  '#notpresent'
+  ''
+
+classpath:user/user.feature:23
 	at com.intuit.karate.junit5.FeatureNode.lambda$next$1(FeatureNode.java:86)
 	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
 	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
@@ -24,16 +27,33 @@ classpath:store/store.feature:32
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-store/store.[6.2:66] Buscar Orden de compra por ID a  Time elapsed: 0.012 s  <<< FAILURE!
+user/user.[3.1:53] Actualizar usuario  Time elapsed: 0.323 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
-js failed:
->>>>
-01: ['store/order', a]
-<<<<
-org.graalvm.polyglot.PolyglotException: ReferenceError: "a" is not defined
-- <js>.:program(Unnamed:1)
+status code was: 200, expected: 404, response time in milliseconds: 311, url: https://petstore.swagger.io/v2/user/user1, response: 
+{"code":200,"type":"unknown","message":"9223372036854745769"}
+classpath:user/user.feature:44
+	at com.intuit.karate.junit5.FeatureNode.lambda$next$1(FeatureNode.java:86)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:601)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-classpath:store/store.feature:52
+user/user.[5.1:84] Iniciar Sesión en el sistema  Time elapsed: 0.303 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+status code was: 200, expected: 404, response time in milliseconds: 296, url: https://petstore.swagger.io/v2/user/login?username=user1&password=987654321, response: 
+{"code":200,"type":"unknown","message":"logged in user session:1771980595815"}
+classpath:user/user.feature:76
 	at com.intuit.karate.junit5.FeatureNode.lambda$next$1(FeatureNode.java:86)
 	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
 	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)

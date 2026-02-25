@@ -1,3 +1,4 @@
 store\StoreRunner.class
+user\UserRunner.class
 examples\ExamplesTest.class
 examples\users\UsersRunner.class

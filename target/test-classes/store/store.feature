@@ -70,7 +70,7 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
         Given path 'store/order', <id>
         When method delete
         Then status <status>
-        And response.message == <message>
+        And match response.message == <message>
         And print response
 
         @Happy
@@ -85,6 +85,24 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
 
 
 
+
       # mvn clean test -Dtest=UsersRunner -Dkarate.options="--tags @TEST-01"
       # mvn clean test -Dtest=StoreRunner -Dkarate.options="--tags @TEST-01"
       # mvn clean test -Dtest=StoreRunner -Dkarate.options="--tags @regresion"
+      # mvn clean test -Dtest=StoreRunner -Dkarate.options="--tags @Happy"
+      # mvn clean test -Dtest=StoreRunner -Dkarate.options="--tags @User"
+
+          #
+
+          #
+
+        #{
+        #"id": 0,
+        #"username": "jllaure",
+        #"firstName": "jose",
+        #"lastName": "llaure",
+        #"email": "jllaure@gmail.com",
+        #"password": "123456",
+        #"phone": "12345678",
+        #"userStatus": 0
+        #}

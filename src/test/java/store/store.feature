@@ -70,7 +70,7 @@ Feature: Automatizar el backend de Store (Acceso a pedidos de PetStore)
         Given path 'store/order', <id>
         When method delete
         Then status <status>
-        And response.message == <message>
+        And match response.message == <message>
         And print response
 
         @Happy
