@@ -1,0 +1,12 @@
+# Carpetas de configuración de IntelliJ
+.idea/
+*.iml
+
+# Resultado de Karate y Maven/Gradle
+target/
+build/
+build.log
+karate.log
+
+# Reportes de ejecución
+karate-reports/
